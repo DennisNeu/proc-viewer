@@ -7,19 +7,13 @@ def memory():
 
     total_memory = kb_to_gib(data["MemTotal"])
     available_memory = kb_to_gib(data["MemAvailable"])
-    used_memory = round(total_memory - available_memory, 2)
-    usage_percentage = round(used_memory / total_memory * 100, 2)
+    used_memory = total_memory - available_memory
+    usage_percentage = used_memory / total_memory * 100
 
-    print(f"Total memory: {round(total_memory)} GiB")
-    print(f"Available memory: {round(available_memory, 2)} GiB")
-    print(f"Used memory: {used_memory} GiB")
-    print(f"Used: {usage_percentage} %")
-
-
-
-    
-    
-
+    print(f"Total memory: {total_memory:.2f} GiB")
+    print(f"Available memory: {available_memory:.2f} GiB")
+    print(f"Used memory: {used_memory:.2f} GiB")
+    print(f"Used: {usage_percentage:.2f} %")
 
 def get_data():
     """gets the data from /proc/meminfo and returns a dict
