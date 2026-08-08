@@ -5,10 +5,12 @@
 
 from uptime import uptime
 from memory import memory
+from processes import processes
 
 def main():
         uptime()
         memory()
+        processes()
 
 if __name__ == "__main__":
     main()
