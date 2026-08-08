@@ -17,4 +17,6 @@ def uptime():
     minutes = round((time - hours * 3600) / 60)
     seconds = round(time % 60)
     print(f"The system has been running for {hours} hours, {minutes} minutes and {seconds} seconds")
- 
+
+if __name__ == "__main__":
+    uptime()
