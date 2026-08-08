@@ -1,9 +1,13 @@
+"""handles relevant uptime data"""
+
 from math import floor
 
 def uptime():
+    """Return the system uptime in seconds."""
+
     with open("/proc/uptime", "r") as file:
         content = file.read().split()
-        file.close()
+
 
     # I use content[0] because split turns the string into an array split by whitespace
     time = float(content[0])
