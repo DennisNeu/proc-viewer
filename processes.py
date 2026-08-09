@@ -9,6 +9,9 @@ class Process:
         self.pid = pid
         self.name = self._get_name()
 
+    def __str__(self):
+        return f"{self.pid}: {self.name}"
+
     def _get_name(self):
         return
 
