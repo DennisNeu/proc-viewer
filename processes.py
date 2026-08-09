@@ -32,15 +32,15 @@ def get_PIDs():
 
     """
     try:
-        # Returns only the directories
-        directories = os.listdir(PATH)
+        # Returns contents of /proc
+        content = os.listdir(PATH)
 
         pids = []
 
         # Loop over each dir, if it is an integer, its a PID
-        for directory in directories:
-            if directory.isdigit():
-                pids.append(int(directory))
+        for item in content:
+            if item.isdigit():
+                pids.append(int(item))
 
         return pids
 
