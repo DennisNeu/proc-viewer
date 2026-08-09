@@ -1,6 +1,21 @@
 # proc-viewer
 Simple python application to read system information from the dynamic /proc linux file system
 
+## What is proc?
+`/proc` is a virtual filesystem within Linux enviroments. The kernel exposes live system information through this filesystem. The user and processes can access the `/proc` filesystem to get details on memory, cpu, processes etc. The files are generated "on the fly" by the kernel
+
+Exploring `/proc` is easy:
+```bash
+cd /proc
+ls
+```
+
+Use `cat` to view exposed files. 
+
+For more info, view:
+
+https://wiki.archlinux.org/title/Procfs
+
 ## Currently supports:
 - displaying memory information
 - system uptime
