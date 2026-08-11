@@ -21,7 +21,7 @@ def main():
               processes.append(Process(PID))
 
         for process in processes:
-              print(f"{process.pid}: {process.name} state: {process.state} PPid: {process.ppid}")
+              print(f"{process.pid}: {process.name} state: {process.state} PPid: {process.ppid} Threads: {process.threads} Memory: {process.memory}")
 
         
 

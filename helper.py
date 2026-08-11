@@ -3,3 +3,7 @@
 def kb_to_gib(kb):
     """calculate kilobytes into gibibyte"""
     return int(kb)/1024/1024
+
+def kb_to_mib(kb):
+    """calculate kilobytes into mib"""
+    return int(kb)/1024

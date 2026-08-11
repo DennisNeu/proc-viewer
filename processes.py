@@ -1,5 +1,6 @@
 """Module that handles processes"""
 import os
+from helper import kb_to_mib
 PATH = "/proc"
 
 class Process:
@@ -11,15 +12,15 @@ class Process:
         self.name = self._status["Name"]
         self.state = self._status["State"]
         self.ppid = int(self._status["PPid"])
+        self.threads = int(self._status["Threads"])
+        print(self._status)
+        self.memory = self._status.get("VmRSS")
 
     def __str__(self):
         return f"{self.pid}: {self.name}"
 
     def __repr__(self):
         return f"{self.pid}: {self.name}"
-
-    def _get_name(self):
-        return
 
     def _read_status(self):
         """gets the data from /proc/<pid>/status and returns a dict
@@ -33,6 +34,11 @@ class Process:
                 key, value = line.split(":", 1)
                 key = key.strip()
                 value = value.strip().removesuffix(" kB")
+
+                if key == "VmRSS":
+                    # key = "memory"
+                    value = round(kb_to_mib(value))
+
                 data[key] = value
 
         return data
