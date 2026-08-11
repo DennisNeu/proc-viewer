@@ -7,26 +7,47 @@ class Process:
 
     def __init__(self, pid):
         self.pid = pid
-        self.name = self._get_name()
+        self._status = self._read_status()
+        self.name = self._status["Name"]
+        self.state = self._status["State"]
+        self.ppid = int(self._status["PPid"])
 
     def __str__(self):
+        return f"{self.pid}: {self.name}"
+
+    def __repr__(self):
         return f"{self.pid}: {self.name}"
 
     def _get_name(self):
         return
 
     def _read_status(self):
-        return
+        """gets the data from /proc/<pid>/status and returns a dict
+        
+        numbers are in kB
+        """
+        data = {}
+
+        with open(f"/proc/{self.pid}/status", "r") as file:
+            for line in file:
+                key, value = line.split(":", 1)
+                key = key.strip()
+                value = value.strip().removesuffix(" kB")
+                data[key] = value
+
+        return data
+
+    
 
 def processes():
     """Main function"""
-    pids = get_PIDs()
+    pids = get_pids()
 
     number_of_processes = len(pids)
 
     print(f"Total amount of processes: {number_of_processes}")
 
-def get_PIDs():
+def get_pids():
     """returns a list of all running processes
     
     Processes are represented in /proc by folders with integers as their name
