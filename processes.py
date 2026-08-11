@@ -36,7 +36,6 @@ class Process:
                 value = value.strip().removesuffix(" kB")
 
                 if key == "VmRSS":
-                    # key = "memory"
                     value = round(kb_to_mib(value))
 
                 data[key] = value
