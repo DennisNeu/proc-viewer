@@ -44,15 +44,15 @@ class Process:
 
     
 
-def processes():
+def _processes():
     """Main function"""
-    pids = get_pids()
+    pids = _get_pids()
 
     number_of_processes = len(pids)
 
     print(f"Total amount of processes: {number_of_processes}")
 
-def get_pids():
+def _get_pids():
     """returns a list of all running processes
     
     Processes are represented in /proc by folders with integers as their name
@@ -79,5 +79,9 @@ def get_pids():
         print("Error:", e)
         return []
 
+def get_processes():
+    pids = _get_pids()
+    return [Process(pid) for pid in pids]
+
 if __name__ == "__main__":
-    processes()
+    _processes()
