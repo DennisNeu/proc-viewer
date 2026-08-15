@@ -15,6 +15,8 @@ def memory():
     print(f"Used memory: {used_memory:.2f} GiB")
     print(f"Used: {usage_percentage:.2f} %")
 
+    return [total_memory, available_memory, used_memory, usage_percentage]
+
 def get_data():
     """gets the data from /proc/meminfo and returns a dict
     

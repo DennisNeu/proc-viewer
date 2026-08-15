@@ -35,3 +35,9 @@ class ProccessWidget(Static):
 
         self.update(table)
 
+class MemoryWidget(Static):
+    def on_mount(self) -> None:
+        memory = memory();
+
+    
+
